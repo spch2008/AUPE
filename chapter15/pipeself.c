@@ -7,7 +7,7 @@
 int
 main(int argc, char *argv[])
 {
-    int fd[2];
+    int fd[2], res;
     char buf[20];    
    
 
@@ -16,15 +16,19 @@ main(int argc, char *argv[])
         exit(0);
 
     }
-   
-    strcpy(buf, "hello world");
-    write(fd[1], buf, strlen(buf));
-    close(fd[1]);    
+    close(fd[1]);
+    //strcpy(buf, "hello world");
+    //write(fd[1], buf, strlen(buf));
     
     memset(buf, 0, sizeof(buf));
-    read(fd[0], buf, sizeof(buf));
+    res = read(fd[0], buf, sizeof(buf));
+    if (res == 0) {
+         printf("write fd closed\n");
 
-    printf("read data : %s\n", buf);
+    } else {
+        printf("read data : %s\n", buf);
+
+    }
 
     return 0;
 }
