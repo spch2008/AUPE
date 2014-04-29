@@ -20,13 +20,14 @@ main(int argc, char *argv[])
     } else if (pid == 0) {
         var += 1;
         global += 1;
-        exit(0);
+        //exit(0);
     }
     int i;
     i = printf("%d  %d\n", global, var);
     
-    char buf[20];
-    sprintf (buf,"%d\n", i);
+    //char buf[20];
+    //sprintf (buf,"%d\n", i);
 
-    write (STDOUT_FILENO, buf, strlen(buf));
+    //write (STDOUT_FILENO, buf, strlen(buf));
+    printf("over\n");
 }
